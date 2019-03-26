@@ -18,6 +18,10 @@ if ('xml' === dataFormat) {
             });
         });
     });
+} else if ('json' === dataFormat) {
+    translateWordsInJsonFile(jsonData).then(newJsonData => {
+        writeConvertedDataToFile(newJsonData);
+    })
 }
 
 async function translateWordsInXmlFile(fileData) {
@@ -25,6 +29,14 @@ async function translateWordsInXmlFile(fileData) {
         fileData['resources']['string'][stringData]['_'] = await translator(fileData['resources']['string'][stringData]['_']);
     }
     return fileData;
+}
+
+async function translateWordsInJsonFile(data) {
+    for (let dataKey in data) {
+        if (data.hasOwnProperty(dataKey))
+            data[dataKey] = await translator(data[dataKey])
+    }
+    return data;
 }
 
 function translator(word) {
