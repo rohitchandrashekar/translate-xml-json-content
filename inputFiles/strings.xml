@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ <string name="name">Alan Parkins</string>
+ <string name="city">San Diego</string>
+ <string name="occupation">Consultant</string>
+ <string name="transport">Bus</string>
+</resources>
